@@ -14,7 +14,7 @@ use Sdkgen\Client\TagAbstract;
 class MarketplaceMyAppTag extends TagAbstract
 {
     /**
-     * Publish an app
+     * Publish an app to the directory
      *
      * @param string $appId
      * @param Passthru $payload
