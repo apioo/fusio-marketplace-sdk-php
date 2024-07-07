@@ -1,0 +1,9 @@
+{
+  "type": "client-php",
+  "require": {
+    "fusio/marketplace": {
+      "target": "./src",
+      "namespace": "Fusio\\Marketplace"
+    }
+  }
+}
