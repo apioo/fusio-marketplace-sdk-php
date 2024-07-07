@@ -42,8 +42,8 @@ class Client extends ClientAbstract
 
 
 
-    public static function build(string $clientId, string $clientSecret, ?TokenStoreInterface $tokenStore = null, ?array $scopes = null): self
+    public static function build(): self
     {
-        return new self('https://api.fusio-project.org', new Credentials\OAuth2($clientId, $clientSecret, 'https://api.fusio-project.org/authorization/token', '', $tokenStore, $scopes));
+        return new self('https://api.sdkgen.app/', new Credentials\Anonymous());
     }
 }
