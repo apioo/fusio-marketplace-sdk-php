@@ -61,15 +61,17 @@ class MarketplaceDirectoryActionTag extends TagAbstract
     /**
      * Returns details of a specific action
      *
-     * @param string $actionId
+     * @param string $user
+     * @param string $name
      * @return MarketplaceAction
      * @throws MessageException
      * @throws ClientException
      */
-    public function get(string $actionId): MarketplaceAction
+    public function get(string $user, string $name): MarketplaceAction
     {
-        $url = $this->parser->url('/marketplace/directory/action/:action_id', [
-            'action_id' => $actionId,
+        $url = $this->parser->url('/marketplace/directory/action/:user/:name', [
+            'user' => $user,
+            'name' => $name,
         ]);
 
         $options = [

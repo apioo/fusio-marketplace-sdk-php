@@ -61,15 +61,17 @@ class MarketplaceDirectoryAppTag extends TagAbstract
     /**
      * Returns details of a specific app
      *
-     * @param string $appId
+     * @param string $user
+     * @param string $name
      * @return MarketplaceApp
      * @throws MessageException
      * @throws ClientException
      */
-    public function get(string $appId): MarketplaceApp
+    public function get(string $user, string $name): MarketplaceApp
     {
-        $url = $this->parser->url('/marketplace/directory/app/:app_id', [
-            'app_id' => $appId,
+        $url = $this->parser->url('/marketplace/directory/app/:user/:name', [
+            'user' => $user,
+            'name' => $name,
         ]);
 
         $options = [
