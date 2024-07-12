@@ -16,14 +16,6 @@ use Sdkgen\Client\TokenStoreInterface;
 
 class Client extends ClientAbstract
 {
-    public function marketplace(): MarketplaceTag
-    {
-        return new MarketplaceTag(
-            $this->httpClient,
-            $this->parser
-        );
-    }
-
     public function authorization(): AuthorizationTag
     {
         return new AuthorizationTag(
