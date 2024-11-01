@@ -6,7 +6,9 @@
 
 namespace Fusio\Marketplace;
 
+use PSX\Schema\Attribute\Description;
 
+#[Description('Installs an object from the marketplace')]
 class MarketplaceInstall implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $name = null;
