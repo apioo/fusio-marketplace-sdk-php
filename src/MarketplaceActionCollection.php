@@ -7,8 +7,8 @@
 namespace Fusio\Marketplace;
 
 /**
- * @extends Collection<MarketplaceAction>
+ * @extends MarketplaceCollection<MarketplaceAction>
  */
-class MarketplaceActionCollection extends Collection
+class MarketplaceActionCollection extends MarketplaceCollection
 {
 }

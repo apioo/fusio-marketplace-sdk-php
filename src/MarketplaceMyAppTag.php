@@ -18,11 +18,11 @@ class MarketplaceMyAppTag extends TagAbstract
      *
      * @param string $appId
      * @param Passthru $payload
-     * @return Message
-     * @throws MessageException
+     * @return MarketplaceMessage
+     * @throws MarketplaceMessageException
      * @throws ClientException
      */
-    public function publish(string $appId, Passthru $payload): Message
+    public function publish(string $appId, Passthru $payload): MarketplaceMessage
     {
         $url = $this->parser->url('/marketplace/my/app/:app_id/publish', [
             'app_id' => $appId,
@@ -39,7 +39,7 @@ class MarketplaceMyAppTag extends TagAbstract
             $response = $this->httpClient->request('POST', $url, $options);
             $data = (string) $response->getBody();
 
-            return $this->parser->parse($data, Message::class);
+            return $this->parser->parse($data, MarketplaceMessage::class);
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
@@ -47,11 +47,11 @@ class MarketplaceMyAppTag extends TagAbstract
 
             switch ($e->getResponse()->getStatusCode()) {
                 case 400:
-                    throw new MessageException($this->parser->parse($data, Message::class));
+                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
                 case 404:
-                    throw new MessageException($this->parser->parse($data, Message::class));
+                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
                 case 500:
-                    throw new MessageException($this->parser->parse($data, Message::class));
+                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -64,11 +64,11 @@ class MarketplaceMyAppTag extends TagAbstract
      * Removes an app
      *
      * @param string $appId
-     * @return Message
-     * @throws MessageException
+     * @return MarketplaceMessage
+     * @throws MarketplaceMessageException
      * @throws ClientException
      */
-    public function delete(string $appId): Message
+    public function delete(string $appId): MarketplaceMessage
     {
         $url = $this->parser->url('/marketplace/my/app/:app_id', [
             'app_id' => $appId,
@@ -84,7 +84,7 @@ class MarketplaceMyAppTag extends TagAbstract
             $response = $this->httpClient->request('DELETE', $url, $options);
             $data = (string) $response->getBody();
 
-            return $this->parser->parse($data, Message::class);
+            return $this->parser->parse($data, MarketplaceMessage::class);
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
@@ -92,11 +92,11 @@ class MarketplaceMyAppTag extends TagAbstract
 
             switch ($e->getResponse()->getStatusCode()) {
                 case 400:
-                    throw new MessageException($this->parser->parse($data, Message::class));
+                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
                 case 404:
-                    throw new MessageException($this->parser->parse($data, Message::class));
+                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
                 case 500:
-                    throw new MessageException($this->parser->parse($data, Message::class));
+                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -110,11 +110,11 @@ class MarketplaceMyAppTag extends TagAbstract
      *
      * @param string $appId
      * @param MarketplaceAppUpdate $payload
-     * @return Message
-     * @throws MessageException
+     * @return MarketplaceMessage
+     * @throws MarketplaceMessageException
      * @throws ClientException
      */
-    public function update(string $appId, MarketplaceAppUpdate $payload): Message
+    public function update(string $appId, MarketplaceAppUpdate $payload): MarketplaceMessage
     {
         $url = $this->parser->url('/marketplace/my/app/:app_id', [
             'app_id' => $appId,
@@ -131,7 +131,7 @@ class MarketplaceMyAppTag extends TagAbstract
             $response = $this->httpClient->request('PUT', $url, $options);
             $data = (string) $response->getBody();
 
-            return $this->parser->parse($data, Message::class);
+            return $this->parser->parse($data, MarketplaceMessage::class);
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
@@ -139,11 +139,11 @@ class MarketplaceMyAppTag extends TagAbstract
 
             switch ($e->getResponse()->getStatusCode()) {
                 case 400:
-                    throw new MessageException($this->parser->parse($data, Message::class));
+                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
                 case 404:
-                    throw new MessageException($this->parser->parse($data, Message::class));
+                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
                 case 500:
-                    throw new MessageException($this->parser->parse($data, Message::class));
+                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -156,11 +156,11 @@ class MarketplaceMyAppTag extends TagAbstract
      * Create a new app
      *
      * @param MarketplaceAppCreate $payload
-     * @return Message
-     * @throws MessageException
+     * @return MarketplaceMessage
+     * @throws MarketplaceMessageException
      * @throws ClientException
      */
-    public function create(MarketplaceAppCreate $payload): Message
+    public function create(MarketplaceAppCreate $payload): MarketplaceMessage
     {
         $url = $this->parser->url('/marketplace/my/app', [
         ]);
@@ -176,7 +176,7 @@ class MarketplaceMyAppTag extends TagAbstract
             $response = $this->httpClient->request('POST', $url, $options);
             $data = (string) $response->getBody();
 
-            return $this->parser->parse($data, Message::class);
+            return $this->parser->parse($data, MarketplaceMessage::class);
         } catch (ClientException $e) {
             throw $e;
         } catch (BadResponseException $e) {
@@ -184,11 +184,11 @@ class MarketplaceMyAppTag extends TagAbstract
 
             switch ($e->getResponse()->getStatusCode()) {
                 case 400:
-                    throw new MessageException($this->parser->parse($data, Message::class));
+                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
                 case 404:
-                    throw new MessageException($this->parser->parse($data, Message::class));
+                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
                 case 500:
-                    throw new MessageException($this->parser->parse($data, Message::class));
+                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -202,7 +202,7 @@ class MarketplaceMyAppTag extends TagAbstract
      *
      * @param string $appId
      * @return MarketplaceApp
-     * @throws MessageException
+     * @throws MarketplaceMessageException
      * @throws ClientException
      */
     public function get(string $appId): MarketplaceApp
@@ -229,11 +229,11 @@ class MarketplaceMyAppTag extends TagAbstract
 
             switch ($e->getResponse()->getStatusCode()) {
                 case 400:
-                    throw new MessageException($this->parser->parse($data, Message::class));
+                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
                 case 404:
-                    throw new MessageException($this->parser->parse($data, Message::class));
+                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
                 case 500:
-                    throw new MessageException($this->parser->parse($data, Message::class));
+                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }
@@ -249,7 +249,7 @@ class MarketplaceMyAppTag extends TagAbstract
      * @param int|null $count
      * @param string|null $query
      * @return MarketplaceAppCollection
-     * @throws MessageException
+     * @throws MarketplaceMessageException
      * @throws ClientException
      */
     public function getAll(?int $startIndex = null, ?int $count = null, ?string $query = null): MarketplaceAppCollection
@@ -278,11 +278,11 @@ class MarketplaceMyAppTag extends TagAbstract
 
             switch ($e->getResponse()->getStatusCode()) {
                 case 400:
-                    throw new MessageException($this->parser->parse($data, Message::class));
+                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
                 case 404:
-                    throw new MessageException($this->parser->parse($data, Message::class));
+                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
                 case 500:
-                    throw new MessageException($this->parser->parse($data, Message::class));
+                    throw new MarketplaceMessageException($this->parser->parse($data, MarketplaceMessage::class));
                 default:
                     throw new UnknownStatusCodeException('The server returned an unknown status code');
             }

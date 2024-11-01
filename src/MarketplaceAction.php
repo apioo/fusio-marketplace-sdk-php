@@ -10,7 +10,7 @@ namespace Fusio\Marketplace;
 class MarketplaceAction extends MarketplaceObject implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?string $class = null;
-    protected ?ActionConfig $config = null;
+    protected ?MarketplaceActionConfig $config = null;
     public function setClass(?string $class) : void
     {
         $this->class = $class;
@@ -19,11 +19,11 @@ class MarketplaceAction extends MarketplaceObject implements \JsonSerializable, 
     {
         return $this->class;
     }
-    public function setConfig(?ActionConfig $config) : void
+    public function setConfig(?MarketplaceActionConfig $config) : void
     {
         $this->config = $config;
     }
-    public function getConfig() : ?ActionConfig
+    public function getConfig() : ?MarketplaceActionConfig
     {
         return $this->config;
     }

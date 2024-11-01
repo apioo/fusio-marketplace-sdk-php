@@ -11,7 +11,7 @@ class MarketplaceObject implements \JsonSerializable, \PSX\Record\RecordableInte
 {
     protected ?int $id = null;
     protected ?string $name = null;
-    protected ?User $author = null;
+    protected ?MarketplaceUser $author = null;
     protected ?string $version = null;
     protected ?string $icon = null;
     protected ?string $summary = null;
@@ -35,11 +35,11 @@ class MarketplaceObject implements \JsonSerializable, \PSX\Record\RecordableInte
     {
         return $this->name;
     }
-    public function setAuthor(?User $author) : void
+    public function setAuthor(?MarketplaceUser $author) : void
     {
         $this->author = $author;
     }
-    public function getAuthor() : ?User
+    public function getAuthor() : ?MarketplaceUser
     {
         return $this->author;
     }
