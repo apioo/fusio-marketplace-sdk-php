@@ -51,19 +51,7 @@ class MarketplaceDirectoryAppTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 400) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
-
-                throw new MarketplaceMessageException($data);
-            }
-
-            if ($statusCode === 404) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
-
-                throw new MarketplaceMessageException($data);
-            }
-
-            if ($statusCode === 500) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
 
                 throw new MarketplaceMessageException($data);
@@ -80,12 +68,12 @@ class MarketplaceDirectoryAppTag extends TagAbstract
      *
      * @param int|null $startIndex
      * @param int|null $count
-     * @param string|null $query
+     * @param string|null $search
      * @return MarketplaceAppCollection
      * @throws MarketplaceMessageException
      * @throws ClientException
      */
-    public function getAll(?int $startIndex = null, ?int $count = null, ?string $query = null): MarketplaceAppCollection
+    public function getAll(?int $startIndex = null, ?int $count = null, ?string $search = null): MarketplaceAppCollection
     {
         $url = $this->parser->url('/marketplace/directory/app', [
         ]);
@@ -96,7 +84,7 @@ class MarketplaceDirectoryAppTag extends TagAbstract
             'query' => $this->parser->query([
                 'startIndex' => $startIndex,
                 'count' => $count,
-                'query' => $query,
+                'search' => $search,
             ], [
             ]),
         ];
@@ -114,19 +102,7 @@ class MarketplaceDirectoryAppTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 400) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
-
-                throw new MarketplaceMessageException($data);
-            }
-
-            if ($statusCode === 404) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
-
-                throw new MarketplaceMessageException($data);
-            }
-
-            if ($statusCode === 500) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
 
                 throw new MarketplaceMessageException($data);
@@ -174,19 +150,7 @@ class MarketplaceDirectoryAppTag extends TagAbstract
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
 
-            if ($statusCode === 400) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
-
-                throw new MarketplaceMessageException($data);
-            }
-
-            if ($statusCode === 404) {
-                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
-
-                throw new MarketplaceMessageException($data);
-            }
-
-            if ($statusCode === 500) {
+            if ($statusCode >= 0 && $statusCode <= 999) {
                 $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(MarketplaceMessage::class));
 
                 throw new MarketplaceMessageException($data);
