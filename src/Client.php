@@ -17,17 +17,17 @@ use Sdkgen\Client\TokenStoreInterface;
 
 class Client extends ClientAbstract
 {
-    public function marketplace(): MarketplaceTag
+    public function authorization(): AuthorizationTag
     {
-        return new MarketplaceTag(
+        return new AuthorizationTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function authorization(): AuthorizationTag
+    public function marketplace(): MarketplaceTag
     {
-        return new AuthorizationTag(
+        return new MarketplaceTag(
             $this->httpClient,
             $this->parser
         );

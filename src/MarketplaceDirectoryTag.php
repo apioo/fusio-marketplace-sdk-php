@@ -14,17 +14,17 @@ use Sdkgen\Client\TagAbstract;
 
 class MarketplaceDirectoryTag extends TagAbstract
 {
-    public function app(): MarketplaceDirectoryAppTag
+    public function action(): MarketplaceDirectoryActionTag
     {
-        return new MarketplaceDirectoryAppTag(
+        return new MarketplaceDirectoryActionTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function action(): MarketplaceDirectoryActionTag
+    public function app(): MarketplaceDirectoryAppTag
     {
-        return new MarketplaceDirectoryActionTag(
+        return new MarketplaceDirectoryAppTag(
             $this->httpClient,
             $this->parser
         );

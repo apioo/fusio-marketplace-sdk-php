@@ -9,6 +9,6 @@ namespace Fusio\Marketplace;
 /**
  * @extends MarketplaceCollection<MarketplaceAction>
  */
-class MarketplaceActionCollection extends MarketplaceCollection
+class MarketplaceActionCollection extends MarketplaceCollection implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
 }

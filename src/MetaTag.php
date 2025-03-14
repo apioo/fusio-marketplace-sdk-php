@@ -16,6 +16,7 @@ class MetaTag extends TagAbstract
 {
     /**
      * @return SystemAbout
+     * @throws CommonMessageException
      * @throws ClientException
      */
     public function getAbout(): SystemAbout
@@ -35,7 +36,7 @@ class MetaTag extends TagAbstract
             $response = $this->httpClient->request('GET', $url, $options);
             $body = $response->getBody();
 
-            $data = $this->parser->parse((string) $body, SystemAbout::class);
+            $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(SystemAbout::class));
 
             return $data;
         } catch (ClientException $e) {
@@ -43,6 +44,12 @@ class MetaTag extends TagAbstract
         } catch (BadResponseException $e) {
             $body = $e->getResponse()->getBody();
             $statusCode = $e->getResponse()->getStatusCode();
+
+            if ($statusCode >= 0 && $statusCode <= 999) {
+                $data = $this->parser->parse((string) $body, \PSX\Schema\SchemaSource::fromClass(CommonMessage::class));
+
+                throw new CommonMessageException($data);
+            }
 
             throw new UnknownStatusCodeException('The server returned an unknown status code: ' . $statusCode);
         } catch (\Throwable $e) {
