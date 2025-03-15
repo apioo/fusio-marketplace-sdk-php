@@ -8,22 +8,23 @@ namespace Fusio\Marketplace;
 
 use GuzzleHttp\Exception\BadResponseException;
 use Sdkgen\Client\Exception\ClientException;
+use Sdkgen\Client\Exception\Payload;
 use Sdkgen\Client\Exception\UnknownStatusCodeException;
 use Sdkgen\Client\TagAbstract;
 
 class MarketplaceMyTag extends TagAbstract
 {
-    public function app(): MarketplaceMyAppTag
+    public function action(): MarketplaceMyActionTag
     {
-        return new MarketplaceMyAppTag(
+        return new MarketplaceMyActionTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function action(): MarketplaceMyActionTag
+    public function app(): MarketplaceMyAppTag
     {
-        return new MarketplaceMyActionTag(
+        return new MarketplaceMyAppTag(
             $this->httpClient,
             $this->parser
         );

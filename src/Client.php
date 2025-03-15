@@ -11,22 +11,23 @@ use Sdkgen\Client\ClientAbstract;
 use Sdkgen\Client\Credentials;
 use Sdkgen\Client\CredentialsInterface;
 use Sdkgen\Client\Exception\ClientException;
+use Sdkgen\Client\Exception\Payload;
 use Sdkgen\Client\Exception\UnknownStatusCodeException;
 use Sdkgen\Client\TokenStoreInterface;
 
 class Client extends ClientAbstract
 {
-    public function marketplace(): MarketplaceTag
+    public function authorization(): AuthorizationTag
     {
-        return new MarketplaceTag(
+        return new AuthorizationTag(
             $this->httpClient,
             $this->parser
         );
     }
 
-    public function authorization(): AuthorizationTag
+    public function marketplace(): MarketplaceTag
     {
-        return new AuthorizationTag(
+        return new MarketplaceTag(
             $this->httpClient,
             $this->parser
         );
@@ -45,5 +46,10 @@ class Client extends ClientAbstract
     public static function build(string $clientId, string $clientSecret, ?TokenStoreInterface $tokenStore = null, ?array $scopes = null): self
     {
         return new self('https://api.fusio-project.org/', new Credentials\OAuth2($clientId, $clientSecret, 'https://api.fusio-project.org/authorization/token', '', $tokenStore, $scopes));
+    }
+
+    public static function buildAnonymous(): self
+    {
+        return new self('https://api.fusio-project.org/', new Credentials\Anonymous());
     }
 }
