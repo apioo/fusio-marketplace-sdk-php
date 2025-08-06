@@ -45,11 +45,11 @@ class Client extends ClientAbstract
 
     public static function build(string $clientId, string $clientSecret, ?TokenStoreInterface $tokenStore = null, ?array $scopes = null): self
     {
-        return new self('https://api.fusio-project.org/', new Credentials\OAuth2($clientId, $clientSecret, 'https://api.fusio-project.org/authorization/token', '', $tokenStore, $scopes));
+        return new self('https://api.fusio-project.org', new Credentials\OAuth2($clientId, $clientSecret, 'https://api.fusio-project.org/authorization/token', 'https://api.fusio-project.org/authorization/authorize', $tokenStore, $scopes));
     }
 
     public static function buildAnonymous(): self
     {
-        return new self('https://api.fusio-project.org/', new Credentials\Anonymous());
+        return new self('https://api.fusio-project.org', new Credentials\Anonymous());
     }
 }
