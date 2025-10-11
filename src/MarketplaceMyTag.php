@@ -30,5 +30,13 @@ class MarketplaceMyTag extends TagAbstract
         );
     }
 
+    public function bundle(): MarketplaceMyBundleTag
+    {
+        return new MarketplaceMyBundleTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
 
 }

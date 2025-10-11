@@ -30,5 +30,13 @@ class MarketplaceDirectoryTag extends TagAbstract
         );
     }
 
+    public function bundle(): MarketplaceDirectoryBundleTag
+    {
+        return new MarketplaceDirectoryBundleTag(
+            $this->httpClient,
+            $this->parser
+        );
+    }
+
 
 }
