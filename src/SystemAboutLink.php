@@ -6,10 +6,13 @@
 
 namespace Fusio\Marketplace;
 
+use PSX\Schema\Attribute\Description;
 
 class SystemAboutLink implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
+    #[Description('The relationship type defining the target URL\'s connection to the current context')]
     protected ?string $rel = null;
+    #[Description('The target URI for the linked resource')]
     protected ?string $href = null;
     public function setRel(?string $rel): void
     {
@@ -27,6 +30,9 @@ class SystemAboutLink implements \JsonSerializable, \PSX\Record\RecordableInterf
     {
         return $this->href;
     }
+    /**
+     * @return \PSX\Record\RecordInterface<mixed>
+     */
     public function toRecord(): \PSX\Record\RecordInterface
     {
         /** @var \PSX\Record\Record<mixed> $record */
